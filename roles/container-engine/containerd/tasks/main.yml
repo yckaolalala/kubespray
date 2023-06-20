@@ -117,14 +117,14 @@
         path: "{{ containerd_cfg_dir }}/certs.d/{{ item.prefix }}"
         state: directory
         mode: 0755
-      loop: "{{ containerd_registries }}"
+      loop: "{{ containerd_registries_mirrors }}"
     - name: containerd | write registries configs
       template:
         src: hosts.toml.j2
         dest: "{{ containerd_cfg_dir }}/certs.d/{{ item.prefix }}/hosts.toml"
         mode: 0640
-      loop: "{{ containerd_registries }}"
-  when: containerd_registries is defined
+      loop: "{{ containerd_registries_mirrors }}"
+  when: containerd_registries_mirrors is defined
 
 # you can sometimes end up in a state where everything is installed
 # but containerd was not started / enabled
