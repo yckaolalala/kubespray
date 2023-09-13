@@ -65,7 +65,7 @@ mkdir -p ${INVENTORY_DIR}
 rm -f ${INVENTORY_DIR}/hosts.ini
 CONFIG_FILE=${INVENTORY_DIR}/hosts.ini /tmp/kubespray.dind.inventory_builder.sh
 
-ansible-playbook --become -e ansible_ssh_user=debian -i ${INVENTORY_DIR}/hosts.ini cluster.yml --extra-vars @contrib/dind/kubespray-dind.yaml
+ansible-playbook --become -e ansible_user=debian -i ${INVENTORY_DIR}/hosts.ini cluster.yml --extra-vars @contrib/dind/kubespray-dind.yaml
 ```
 
 NOTE: You could also test other distros without editing files by
@@ -78,7 +78,7 @@ ansible-playbook -i hosts dind-cluster.yaml --extra-vars node_distro=DISTRO
 
 cd ../..
 CONFIG_FILE=inventory/local-dind/hosts.ini /tmp/kubespray.dind.inventory_builder.sh
-ansible-playbook --become -e ansible_ssh_user=DISTRO -i inventory/local-dind/hosts.ini cluster.yml --extra-vars @contrib/dind/kubespray-dind.yaml --extra-vars bootstrap_os=DISTRO
+ansible-playbook --become -e ansible_user=DISTRO -i inventory/local-dind/hosts.ini cluster.yml --extra-vars @contrib/dind/kubespray-dind.yaml --extra-vars bootstrap_os=DISTRO
 ```
 
 ## Resulting deployment

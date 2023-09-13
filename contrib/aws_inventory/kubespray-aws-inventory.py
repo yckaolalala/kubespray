@@ -1,10 +1,13 @@
 #!/usr/bin/env python
 
 from __future__ import print_function
-import boto3
-import os
+
 import argparse
 import json
+import os
+
+import boto3
+
 
 class SearchEC2Tags(object):
 
@@ -52,14 +55,14 @@ class SearchEC2Tags(object):
         ##Suppose default vpc_visibility is private
         dns_name = instance.private_dns_name
         ansible_host = {
-          'ansible_ssh_host': instance.private_ip_address
+          'ansible_host': instance.private_ip_address
         }
 
         ##Override when vpc_visibility actually is public
         if self.vpc_visibility == "public":
           dns_name = instance.public_dns_name
           ansible_host = {
-            'ansible_ssh_host': instance.public_ip_address
+            'ansible_host': instance.public_ip_address
           }
 
         ##Set when instance actually has node_labels

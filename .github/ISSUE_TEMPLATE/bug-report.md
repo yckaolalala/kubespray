@@ -39,6 +39,6 @@ explain why.
 **Anything else do we need to know**:
 <!-- By running scripts/collect-info.yaml you can get a lot of useful informations.
 Script can be started by:
-ansible-playbook -i <inventory_file_path> -u <ssh_user> -e ansible_ssh_user=<ssh_user> -b --become-user=root -e dir=`pwd` scripts/collect-info.yaml
+ansible-playbook -i <inventory_file_path> -u <ssh_user> -e ansible_user=<ssh_user> -b --become-user=root -e dir=`pwd` scripts/collect-info.yaml
 (If you using CoreOS remember to add '-e ansible_python_interpreter=/opt/bin/python').
 After running this command you can find logs in `pwd`/logs.tar.gz. You can even upload somewhere entire file and paste link here.-->

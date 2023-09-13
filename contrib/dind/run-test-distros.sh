@@ -27,7 +27,7 @@ test_distro() {
         CONFIG_FILE=${INVENTORY_DIR}/hosts.ini /tmp/kubespray.dind.inventory_builder.sh
         # expand $extra with -e in front of each word
         extra_args=""; for extra_arg in $extra; do extra_args="$extra_args -e $extra_arg"; done
-        ansible-playbook --become -e ansible_ssh_user=$distro -i \
+        ansible-playbook --become -e ansible_user=$distro -i \
             ${INVENTORY_DIR}/hosts.ini cluster.yml \
             -e @contrib/dind/kubespray-dind.yaml -e bootstrap_os=$distro ${extra_args}
         pass_or_fail "$prefix: kubespray"

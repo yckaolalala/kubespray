@@ -8,7 +8,7 @@ You would also need to tag the resources in your VPC accordingly for the aws pro
 
 Make sure your VPC has both DNS Hostnames support and Private DNS enabled.
 
-The next step is to make sure the hostnames in your `inventory` file are identical to your internal hostnames in AWS. This may look something like `ip-111-222-333-444.us-west-2.compute.internal`. You can then specify how Ansible connects to these instances with `ansible_ssh_host` and `ansible_ssh_user`.
+The next step is to make sure the hostnames in your `inventory` file are identical to your internal hostnames in AWS. This may look something like `ip-111-222-333-444.us-west-2.compute.internal`. You can then specify how Ansible connects to these instances with `ansible_host` and `ansible_user`.
 
 You can now create your cluster!
 
@@ -23,10 +23,10 @@ This will produce an inventory that is passed into Ansible that looks like the f
   "_meta": {
     "hostvars": {
       "ip-172-31-3-xxx.us-east-2.compute.internal": {
-        "ansible_ssh_host": "172.31.3.xxx"
+        "ansible_host": "172.31.3.xxx"
       },
       "ip-172-31-8-xxx.us-east-2.compute.internal": {
-        "ansible_ssh_host": "172.31.8.xxx"
+        "ansible_host": "172.31.8.xxx"
       }
     }
   },

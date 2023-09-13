@@ -71,7 +71,7 @@
     state: directory
     recurse: yes
     mode: 0755
-    owner: "{{ ansible_ssh_user | default(ansible_user_id) }}"
+    owner: "{{ ansible_user | default(ansible_user_id) }}"
   when:
     - ansible_os_family not in ["Flatcar", "Flatcar Container Linux by Kinvolk"]
 

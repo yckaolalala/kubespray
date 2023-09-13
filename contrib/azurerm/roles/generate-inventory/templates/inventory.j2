@@ -1,9 +1,9 @@
 
 {% for vm in vm_list %}
 {% if not use_bastion or vm.name == 'bastion' %}
-{{ vm.name }} ansible_ssh_host={{ vm.networkProfile.networkInterfaces[0].expanded.ipConfigurations[0].publicIPAddress.expanded.ipAddress }} ip={{ vm.networkProfile.networkInterfaces[0].expanded.ipConfigurations[0].privateIPAddress }}
+{{ vm.name }} ansible_host={{ vm.networkProfile.networkInterfaces[0].expanded.ipConfigurations[0].publicIPAddress.expanded.ipAddress }} ip={{ vm.networkProfile.networkInterfaces[0].expanded.ipConfigurations[0].privateIPAddress }}
 {% else %}
-{{ vm.name }} ansible_ssh_host={{ vm.networkProfile.networkInterfaces[0].expanded.ipConfigurations[0].privateIPAddress }}
+{{ vm.name }} ansible_host={{ vm.networkProfile.networkInterfaces[0].expanded.ipConfigurations[0].privateIPAddress }}
 {% endif %}
 {% endfor %}
 

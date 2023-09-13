@@ -82,7 +82,7 @@ nat_outgoing: false  # (optional) NAT outgoing (default value: true).
 And you'll need to edit the inventory and add a hostvar `local_as` by node.
 
 ```ShellSession
-node1 ansible_ssh_host=95.54.0.12 local_as=xxxxxx
+node1 ansible_host=95.54.0.12 local_as=xxxxxx
 ```
 
 ### Optional : Defining BGP peers
@@ -135,12 +135,12 @@ Here's an example of Kubespray inventory with standalone route reflectors:
 
 ```ini
 [all]
-rr0 ansible_ssh_host=10.210.1.10 ip=10.210.1.10
-rr1 ansible_ssh_host=10.210.1.11 ip=10.210.1.11
-node2 ansible_ssh_host=10.210.1.12 ip=10.210.1.12
-node3 ansible_ssh_host=10.210.1.13 ip=10.210.1.13
-node4 ansible_ssh_host=10.210.1.14 ip=10.210.1.14
-node5 ansible_ssh_host=10.210.1.15 ip=10.210.1.15
+rr0 ansible_host=10.210.1.10 ip=10.210.1.10
+rr1 ansible_host=10.210.1.11 ip=10.210.1.11
+node2 ansible_host=10.210.1.12 ip=10.210.1.12
+node3 ansible_host=10.210.1.13 ip=10.210.1.13
+node4 ansible_host=10.210.1.14 ip=10.210.1.14
+node5 ansible_host=10.210.1.15 ip=10.210.1.15
 
 [kube_control_plane]
 node2

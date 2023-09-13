@@ -223,7 +223,7 @@ def equinix_metal_device(resource, tfvars=None):
         'state': raw_attrs['state'],
         # ansible
         'ansible_host': raw_attrs['network.0.address'],
-        'ansible_ssh_user': 'root',  # Use root by default in metal
+        'ansible_user': 'root',  # Use root by default in metal
         # generic
         'ipv4_address': raw_attrs['network.0.address'],
         'public_ipv4': raw_attrs['network.0.address'],
@@ -235,7 +235,7 @@ def equinix_metal_device(resource, tfvars=None):
 
     if raw_attrs['operating_system'] == 'flatcar_stable':
         # For Flatcar set the ssh_user to core
-        attrs.update({'ansible_ssh_user': 'core'})
+        attrs.update({'ansible_user': 'core'})
 
     # add groups based on attrs
     groups.append('equinix_metal_operating_system_%s' % attrs['operating_system'])

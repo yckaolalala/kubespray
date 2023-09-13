@@ -1,5 +1,5 @@
 {% for instance in droplets.results %}
-{{instance.droplet.name}} ansible_ssh_host={{instance.droplet.ip_address}}
+{{instance.droplet.name}} ansible_host={{instance.droplet.ip_address}}
 {% endfor %}
 
 {% if mode is defined and mode == "separate" %}

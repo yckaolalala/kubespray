@@ -1,12 +1,12 @@
 {% set node1 = gce.instance_data[0].name %}
-{{node1}} ansible_ssh_host={{gce.instance_data[0].public_ip}}
+{{node1}} ansible_host={{gce.instance_data[0].public_ip}}
 {% if mode != "aio" %}
 {% set node2 = gce.instance_data[1].name %}
-{{node2}} ansible_ssh_host={{gce.instance_data[1].public_ip}}
+{{node2}} ansible_host={{gce.instance_data[1].public_ip}}
 {% endif %}
 {% if mode is defined and mode in ["ha", "ha-scale", "separate", "separate-scale"] %}
 {% set node3 = gce.instance_data[2].name %}
-{{node3}} ansible_ssh_host={{gce.instance_data[2].public_ip}}
+{{node3}} ansible_host={{gce.instance_data[2].public_ip}}
 {% endif %}
 {% if mode is defined and mode in ["separate", "separate-scale"] %}
 [kube_control_plane]

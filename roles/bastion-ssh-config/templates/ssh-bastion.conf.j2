@@ -3,7 +3,7 @@
 
 {% for h in groups['all'] %}
 {% if h not in groups['bastion'] %}
-{% if vars.update({'hosts': vars['hosts'] + ' ' + (hostvars[h].get('ansible_ssh_host') or hostvars[h]['ansible_host'])}) %}{% endif %}
+{% if vars.update({'hosts': vars['hosts'] + ' ' + (hostvars[h].get('ansible_host') or hostvars[h]['ansible_host'])}) %}{% endif %}
 {% endif %}
 {% endfor %}
 
