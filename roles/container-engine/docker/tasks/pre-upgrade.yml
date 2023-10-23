@@ -18,7 +18,7 @@
 
 - name: Ensure podman not installed. | RedHat
   package:
-    name: '{{ podman_remove_packages_yum }}'
+    name: '{{ containerd_remove_packages_yum }}'
     state: absent
   when:
     - ansible_os_family == 'RedHat'

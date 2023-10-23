@@ -34,9 +34,10 @@ docker_remove_packages_yum:
   - docker-logrotate
   - docker-engine-selinux.noarch
 
-# remove podman to avoid containerd.io confliction
-podman_remove_packages_yum:
+# remove podman and runc to avoid containerd.io confliction
+containerd_remove_packages_yum:
   - podman
+  - runc
 
 docker_remove_packages_apt:
   - docker
