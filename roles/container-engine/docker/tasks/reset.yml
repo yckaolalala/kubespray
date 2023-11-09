@@ -9,6 +9,17 @@
     docker_packages_list: "{{ ansible_facts.packages.keys() | select('search', '^docker*') }}"
     containerd_package: "{{ ansible_facts.packages.keys() | select('search', '^containerd*') }}"
 
+- name: Docker | Gather os specific variables
+  include_vars: "{{ item }}"
+  with_first_found:
+    - files:
+        - "{{ ansible_distribution | lower }}-{{ ansible_distribution_release | lower }}.yml"
+        - "{{ ansible_distribution | lower }}.yml"
+        - "{{ ansible_os_family | lower }}.yml"
+      paths:
+        - ../vars
+      skip: true
+
 - name: Docker | Stop all running container
   shell: "set -o pipefail && {{ docker_bin_dir }}/docker ps -q | xargs -r {{ docker_bin_dir }}/docker kill"
   args:
@@ -71,6 +82,7 @@
     state: absent
   with_items: "{{ docker_repo_info.repos }}"
   when: ansible_pkg_mgr == 'apt'
+  failed_when: false
 
 - name: Docker | Remove docker repository on Fedora
   file:

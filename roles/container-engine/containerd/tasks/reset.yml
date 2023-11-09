@@ -1,4 +1,16 @@
 ---
+- name: Containerd | Gather os specific variables
+  include_vars: "{{ item }}"
+  with_first_found:
+    - files:
+        - "{{ ansible_distribution | lower }}.yml"
+        - "{{ ansible_os_family | lower }}.yml"
+      paths:
+        - ../vars
+      skip: true
+  tags:
+    - reset_containerd
+
 - name: Containerd | Remove containerd repository for RedHat os family
   file:
     path: "{{ yum_repo_dir }}/containerd.repo"
@@ -14,6 +26,7 @@
     state: absent
   with_items: "{{ containerd_repo_info.repos }}"
   when: ansible_pkg_mgr == 'apt'
+  failed_when: false
   tags:
     - reset_containerd
 
