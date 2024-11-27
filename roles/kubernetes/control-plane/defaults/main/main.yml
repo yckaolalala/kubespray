@@ -38,6 +38,10 @@ kube_controller_manager_leader_elect_renew_deadline: 10s
 # discovery_timeout modifies the discovery timeout
 discovery_timeout: 5m0s
 
+# Allow more arbitrary algorithm types, that can also include key size or curve type encoded in the name:
+# "RSA-2048" (default), "RSA-3072", "RSA-4096" or "ECDSA-P256".
+kubeadm_encryption_algorithm: RSA-2048
+
 # Instruct first control plane node to refresh kubeadm token
 kubeadm_refresh_token: true
 
